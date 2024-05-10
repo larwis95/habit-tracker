@@ -3,15 +3,35 @@
   --lightpink: F5DDDD;
   --blue: 53687E;
   --gray: 4a4e69;
+  --white: #ffffff;
+  --khaki: #f0e68c;
+  --skyblue: #87ceeb;
 }
 
 body {
+  font-family: "Roboto", sans-serif;
   background-color: var(--darkblue);
+  color: white;
 }
 
 header {
+  text-align: center;
   background-color: var(--gray);
 }
+
 h1 {
+  font-size: 3rem;
+  color: var(--white);
+}
+
+.navbar-nav .nav-link,
+.navbar-link {
   color: var(--lightpink);
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-link:hover {
+  color: var(--skyblue);
+  text-decoration: none;
 }
