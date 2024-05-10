@@ -1,9 +1,26 @@
+<div class="container">
 <form class="loginForm">
-  <input type="email" placeholder ="Enter your email" id="emailinput"></input>
-  <input type="password" placeholder="Enter password" id="passwordinput"></input>
-  <button type="submit" id="loginbutton">Login here</button>
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="emailinput" value="email@example.com">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="passwordinput">
+    </div>
+  </div>
+<!--button for submit on login page-->
+  <button type="submit" id="loginbutton" class="btn btn-primary">Login</button>
+  <button type="button" id="signup" class="btn btn-primary">Signup</button>
 </form>
+<!--button for signup on login page-->
+</div>
 
-<button id="signup">signup here</button>
 
 <script src="/js/login.js"></script>
+
+
+
