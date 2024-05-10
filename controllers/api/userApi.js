@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Habit, Pet, State } = require('../../models');
+const { User } = require('../../models');
 
 
 router.post('/', async (req, res) => {
   try {
-    const dbUserData = await User.create({
+    const userData = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -12,9 +12,9 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.logged_in = true;
-      req.session.user_id = dbUserData.id;
+      req.session.user_id = userData.id;
 
-      res.status(200).json(dbUserData);
+      res.status(200).json({username: userData.username, email: userData.email, id: userData.id, message: 'You are now logged in!'});
     });
   } catch (err) {
     console.log(err);
@@ -42,15 +42,18 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    res
-      .status(200)
-      .json({ message: 'You are now logged in!' });
+    req.session.save(() => {
+      req.session.logged_in = true;
+      req.session.user_id = userData.id;
+
+      res.status(200).json({username: userData.username, id: userData.id, message: 'You are now logged in!'});
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: { exclude: ['password'] },
@@ -62,57 +65,4 @@ router.get('/:id', async (req, res) => {
   }
 }
 );
-
-router.post('/habit', async (req, res) => {
-  try {
-    const habitData = await Habit.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(habitData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.get('/habits/:id' , async (req, res) => {
-  try {
-    const habitData = await Habit.findByPk(req.params.id, {
-      include: [{ model: User }],
-    });
-
-    res.status(200).json(habitData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.post('/pet', async (req, res) => {
-  try {
-    const petData = await Pet.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(petData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.get('/pet/:id', async (req, res) => {
-  try {
-    const petData = await Pet.findByPk(req.params.id, {
-      include: [{ model: State }],
-    });
-
-    res.status(200).json(petData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
-
 module.exports = router;
