@@ -1,27 +1,28 @@
 :root {
-  --darkblue: 3A4454;
-  --lightpink: F5DDDD;
-  --blue: 53687E;
-  --gray: 4a4e69;
-  --white: #ffffff;
+  --background: #000814;
+  --navbar: linear-gradient(#001d3d, #000814);
+  --text01: #ffffff;
+  --lightpink: #f5dddd;
+  --gray: #4a4e69;
   --khaki: #f0e68c;
   --skyblue: #87ceeb;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: var(--darkblue);
+  background-color: var(--background);
   color: white;
 }
 
 header {
   text-align: center;
-  background-color: var(--gray);
+  background: var(--navbar);
 }
 
 h1 {
-  font-size: 3rem;
-  color: var(--white);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  color: var(--text01);
 }
 
 .navbar-nav .nav-link,
