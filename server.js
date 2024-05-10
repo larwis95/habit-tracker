@@ -3,7 +3,7 @@ const express = require('express');
 const expressSession = require('express-session');
 const expressHandleBars = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(expressSession.Store);
-const handleBarHelpers = require('./libs/handlebars_helpers/helpers');
+const handleBarHelpers = require('./libs/handlebars/helpers');
 const sequelize = require('./config/config');
 
 const PORT = process.env.PORT || 3001;
