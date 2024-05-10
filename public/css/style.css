@@ -1,0 +1,17 @@
+:root {
+  --darkblue: 3A4454;
+  --lightpink: F5DDDD;
+  --blue: 53687E;
+  --gray: 4a4e69;
+}
+
+body {
+  background-color: var(--darkblue);
+}
+
+header {
+  background-color: var(--gray);
+}
+h1 {
+  color: var(--lightpink);
+}
