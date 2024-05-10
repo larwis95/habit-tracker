@@ -22,6 +22,10 @@ State.hasMany(Pet, {
   onDelete: 'CASCADE'
 });
 
+Pet.belongsTo(State, {
+  foreignKey: 'pet_state'
+});
+
 Habit.belongsTo(User, {
   foreignKey: 'user_id'
 });
