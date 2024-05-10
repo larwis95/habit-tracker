@@ -50,16 +50,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end().redirect('/');
-    });
-  } else {
-    res.status(404).end().redirect('/');
-  }
-});
-
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
