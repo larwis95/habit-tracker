@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:user_id', async (req, res) => {
+router.get('/user', async (req, res) => {
   try {
     const petData = await Pet.findAll({
       where: {
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:user_id', async (req, res) => {
+router.put('/', async (req, res) => {
   try {
     const petData = await Pet.update(req.body, {
       where: {
@@ -57,7 +57,7 @@ router.put('/:user_id', async (req, res) => {
   }
 });
 
-router.delete('/:user_id', async (req, res) => {
+router.delete('/', async (req, res) => {
   try {
     const petData = await Pet.destroy({
       where: {

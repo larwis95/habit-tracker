@@ -1,0 +1,45 @@
+[
+  {
+    "habit_name": "Read a book",
+    "habit_description": "Read a book for 30 minutes",
+    "user_id": 1,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": null
+  },
+  {
+    "habit_name": "Exercise",
+    "habit_description": "Exercise for 45 minutes",
+    "user_id": 1,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": "2021-05-01T00:00:00.000Z"
+  },
+  {
+    "habit_name": "Meditate",
+    "habit_description": "Meditate for 15 minutes",
+    "user_id": 3,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": null
+  },
+  {
+    "habit_name": "Read a book",
+    "habit_description": "Read a book for 30 minutes",
+    "user_id": 2,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": null
+  },
+  {
+    "habit_name": "Exercise",
+    "habit_description": "Exercise for 45 minutes",
+    "user_id": 2,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": null
+  },
+  {
+    "habit_name": "Meditate",
+    "habit_description": "Meditate for 15 minutes",
+    "user_id": 4,
+    "scheduled_date": "2021-06-01T00:00:00.000Z",
+    "completed_date": null
+  }
+
+]

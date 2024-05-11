@@ -1,3 +1,4 @@
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 const path = require('path');
 const express = require('express');
 const expressSession = require('express-session');
