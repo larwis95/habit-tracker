@@ -1,3 +1,4 @@
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 const router = require('express').Router();
 const { User } = require('../../models');
 
@@ -55,7 +56,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
     });
 
