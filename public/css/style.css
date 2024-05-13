@@ -34,7 +34,7 @@ h7 a {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background: var(--footer);
 }
