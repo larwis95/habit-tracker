@@ -82,6 +82,20 @@ footer {
   margin: 35px;
 }
 
+.homePage {
+  background-color: var(--darkerblue);
+  background-image: url("../images/mountainbg.jpg");
+  padding: 20px;
+}
+
+.homePage h1 {
+  --webkit-text-stroke: 1px black;
+}
+
+.homePage p {
+  --webkit-text-stroke: 1px black;
+};
+
 /* hover setting */
 
 .navbar-nav .nav-link:hover,
