@@ -1,9 +1,23 @@
-<div class="container">
-<form class="signupForm">
-  <input type="text" placeholder="Enter your username" id="usernameSignup">
-  <input type="email" placeholder="Enter your email" id="emailSignup">
-  <input type="password" placeholder="Enter password" id="passwordSignup">
-  <button type="submit" id="signupButton">Sign up</button>
-</form>
-</div>
+<div class="container mt-5 container-login">
+<form class="loginForm">
+   <div class="mb-3 row">
+    <label for="username" class="col-sm-12 col-md-3 col-lg-6 form-label">Username</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="usernameSignup" placeholder="username">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-12 col-md-3 col-lg-6 form-label">Email</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="emailSignup" placeholder="email@example.com">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Password</label>
+    <div class="col-sm-12">
+      <input type="password" class="form-control" id="passwordSignup" placeholder="Enter Password">
+    </div>
+  </div>
+    <button type="submit" id="signupBtn" class="btn btn-primary btn-login">Login</button>
+  </form>
 <script src="/js/signup.js"></script>

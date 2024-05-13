@@ -71,6 +71,7 @@ footer {
 .form-control {
   background-color: var(--gray);
   border: 1px solid var(--background);
+  color: var(--khaki);
 }
 
 /* hover setting */

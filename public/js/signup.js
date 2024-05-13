@@ -1,4 +1,4 @@
-const signupForm = document.querySelector(".signupForm");
+const signupBtn = document.querySelector("#signupBtn");
 
 const handleSignup = async (event) => {
   event.preventDefault();
@@ -17,4 +17,4 @@ const handleSignup = async (event) => {
   }
 };
 
-signupForm.addEventListener("submit", handleSignup);
+signupBtn.addEventListener("click", handleSignup);
