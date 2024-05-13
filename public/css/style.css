@@ -74,6 +74,14 @@ footer {
   color: var(--khaki);
 }
 
+.aboutcontainer {
+  border: 1px solid var(--khaki);
+  background-color: var(--darkerblue);
+  color: var(--khaki);
+  padding: 5%;
+  margin: 35px;
+}
+
 /* hover setting */
 
 .navbar-nav .nav-link:hover,
