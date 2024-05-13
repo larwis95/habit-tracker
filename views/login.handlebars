@@ -1,9 +1,26 @@
+<div class="container mt-5 container-login">
 <form class="loginForm">
-  <input type="email" placeholder ="Enter your email" id="emailinput"></input>
-  <input type="password" placeholder="Enter password" id="passwordinput"></input>
-  <button type="submit" id="loginbutton">Login here</button>
-</form>
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-12 col-md-3 col-lg-6 form-label">Email</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="emailinput" placeholder="email@example.com">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Password</label>
+    <div class="col-sm-12">
+      <input type="password" class="form-control" id="passwordinput" placeholder="Enter Password">
+    </div>
+  </div>
+<!--button for submit on login page-->
+  <button type="submit" id="loginbutton" class="btn btn-primary btn-login">Login</button>
 
-<button id="signup">signup here</button>
+</form>
+<!--button for signup on login page-->
+</div>
+
 
 <script src="/js/login.js"></script>
+
+
+
