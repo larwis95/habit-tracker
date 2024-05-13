@@ -1,11 +1,11 @@
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 const router = require('express').Router();
 const { User } = require('../../models');
 
 
 router.post('/', async (req, res) => {
   try {
-    console.log(req.body)
-    const dbUserData = await User.create({
+    const userData = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -13,9 +13,9 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.logged_in = true;
-      req.session.user_id = dbUserData.id;
+      req.session.user_id = userData.id;
 
-      res.status(200).json(dbUserData);
+      res.status(200).json({username: userData.username, email: userData.email, id: userData.id, message: 'You are now logged in!'});
     });
   } catch (err) {
     console.log(err);
@@ -43,22 +43,27 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    res
-      .status(200)
-      .json({ message: 'You are now logged in!' });
+    req.session.save(() => {
+      req.session.logged_in = true;
+      req.session.user_id = userData.id;
+
+      res.status(200).json({username: userData.username, id: userData.id, message: 'You are now logged in!'});
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end().redirect('/');
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
     });
-  } else {
-    res.status(404).end().redirect('/');
-  }
-});
 
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+);
 module.exports = router;
