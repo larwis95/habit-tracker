@@ -40,6 +40,23 @@ router.get(/logout/, async (req, res) => {
   });
 });
 
+router.get('/habits', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Habit }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('habits', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/about', async (req, res) => {
   res.render('about');
 });

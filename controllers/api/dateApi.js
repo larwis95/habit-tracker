@@ -26,4 +26,16 @@ router.post('/compare', async (req, res) => {
   res.json(result);
 });
 
+router.post('/format', async (req, res) => {
+  const { date, format } = req.body;
+  const result = datefns.format(date, format);
+  res.json(result);
+});
+
+router.post('/dayname', async (req, res) => {
+  const { date } = req.body;
+  const result = datefns.format(date, 'EEEE');
+  res.json(result);
+});
+
 module.exports = router;

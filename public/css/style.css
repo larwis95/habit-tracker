@@ -86,11 +86,15 @@ footer {
   background-color: var(--darkerblue);
   background-image: url("../images/mountainbg.jpg");
   padding: 20px;
-  min-height: 1200px;
-  background-size: cover;
+  min-height: 1500px;
   overflow-x: hidden;
   border: 1px solid var(--khaki);
   position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 100px;
 }
 
 .homePage h1 {
@@ -112,12 +116,12 @@ footer {
   gap: 4vmin;
   left: 50%;
   transform: translate(var(--right), 0);
-  transition: transform 1.5s;
+  transition: transform 2s;
 }
 .homePagePets > .petImage {
   width: 40vmin;
   height: 56vmin;
-  object-fit: cover;
+  object-fit: 100% 50%
   object-position: center;
 }
 
@@ -125,6 +129,10 @@ footer {
   position: rleative;
   left: 15%;
   top: 700%;
+}
+
+.underPets h2 {
+  -webkit-text-stroke: 1px black;
 }
 
 .homePageAbout {
@@ -137,10 +145,43 @@ footer {
   border-right: 1px solid var(--khaki);
   padding-right: 3px;
   margin-right: 5px;
+  position: relative;
 }
 
 .homePageAbout p {
   margin-left: 5px;
+}
+
+.signuploginRow {
+  position: relative;
+  top: 150%;
+  left: 50%;
+}
+
+.homePageLinkContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 50px;
+};
+
+/* ID selectors */
+#homePageLink {
+  color: var(--khaki);
+  text-decoration: none;
+  -webkit-text-stroke: 1px black;
+}
+
+#homePageSignup {
+  color: var(--khaki);
+  text-decoration: none;
+  -webkit-text-stroke: 1px black;
+}
+
+#linkh2 {
+  -webkit-text-stroke: 1px black;
 }
 
 /* hover setting */
@@ -158,6 +199,16 @@ h7 a:hover {
   border: 1px solid var(--khaki);
 }
 
+#homePageLink:hover {
+  color: var(--skyblue);
+  text-decoration: none;
+}
+
+#homePageSignup:hover {
+  color: var(--skyblue);
+  text-decoration: none;
+}
+
 /*placeholder settings*/
 
 .form-control::placeholder {
@@ -170,4 +221,29 @@ h7 a:hover {
   border: 2px solid var(--khaki);
   background-color: grey;
   color: var(--text01);
+}
+
+/*media query*/
+@media only screen and (max-width: 774px) {
+  .signuploginRow {
+    position: relative;
+    top: 120%;
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 731px) {
+  .underPets h2 {
+    position: relative;
+    left: -10%;
+    top: 30%;
+  }
+}
+
+@media only screen and (max-width: 429px) {
+  .signuploginRow {
+    position: relative;
+    top: 90%;
+    left: 5%;
+  }
 }
