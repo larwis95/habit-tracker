@@ -1,8 +1,31 @@
-<ul>
-  {{#if logged_in}}
-    <li><a action="/api/users/logout" method="GET">Logout</a></li>
-  {{else}}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Signup</a></li>
-  {{/if}}
-</ul>
+<div class="dropdown d-flex justify-content-end">
+  <button class="btn btn-secondary dropdown-toggle btn-login" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Days
+    {{!-- animation dropdown icon
+    <div class="dropdown-icon">
+      <span class="left-icon"></span>
+      <span class="right-icon"></span>
+    </div> --}}
+  </button>
+  <ul class="dropdown-menu btn-login">
+    <li><a class="dropdown-item" href="#">Monday</a></li>
+    <li><a class="dropdown-item" href="#">Tuesday</a></li>
+    <li><a class="dropdown-item" href="#">Wednesday</a></li>
+    <li><a class="dropdown-item" href="#">Thursday</a></li>
+    <li><a class="dropdown-item" href="#">Friday</a></li>
+    <li><a class="dropdown-item" href="#">Sunday</a></li>
+  </ul>
+</div>
+<div class="container dashboard">
+  date name description
+
+</div>
+<div class="container addhabits">
+  <form class="posthabit">
+    habitname
+    description
+    finish habit by dropdown monday-sunday
+  </form>
+</div>
+
+<script src="/js/dashboard.js"></script>
