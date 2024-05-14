@@ -59,7 +59,7 @@ footer {
   width: 50%;
   border: 1px solid var(--khaki);
   padding: 35px;
-  background-color: var(--darkerblue);
+  background-color: rgba(28, 101, 150, .5);
 }
 
 .btn-login {
@@ -89,14 +89,21 @@ footer {
   min-height: 1200px;
   background-size: cover;
   overflow-x: hidden;
+  border: 1px solid var(--khaki);
+  position: relative;
 }
 
 .homePage h1 {
-  --webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px black;
+  position: relative;
 }
 
 .homePage p {
-  --webkit-text-stroke: 1px black;
+  font-size: 1.5rem;
+  -webkit-text-stroke: 1px black;
+  position: relative;
+  margin-bottom: 40px;
+  weight: 100%;
 }
 .homePagePets {
   display: flex;
@@ -104,17 +111,38 @@ footer {
   position: absolute;
   gap: 4vmin;
   left: 50%;
-  top: 50%;
   transform: translate(var(--right), 0);
-  transition: transform 1s;
+  transition: transform 1.5s;
 }
-
 .homePagePets > .petImage {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;
   object-position: center;
 }
+
+.underPets {
+  position: rleative;
+  left: 15%;
+  top: 700%;
+}
+
+.homePageAbout {
+  background: var(--darkerblue);
+  border: 1px solid var(--khaki);
+  padding: 5%;
+}
+
+.homePageAbout h2 {
+  border-right: 1px solid var(--khaki);
+  padding-right: 3px;
+  margin-right: 5px;
+}
+
+.homePageAbout p {
+  margin-left: 5px;
+}
+
 /* hover setting */
 
 .navbar-nav .nav-link:hover,
