@@ -21,9 +21,27 @@
             <ul class="navbar-nav">
               {{#if logged_in}}
                 <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/api/habits">Habits</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="/logout">Logout</a>
                 </li>
               {{else}}
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/api/habits">Habits</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>
                 </li>
