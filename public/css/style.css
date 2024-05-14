@@ -86,6 +86,9 @@ footer {
   background-color: var(--darkerblue);
   background-image: url("../images/mountainbg.jpg");
   padding: 20px;
+  min-height: 1200px;
+  background-size: cover;
+  overflow-x: hidden;
 }
 
 .homePage h1 {
@@ -94,8 +97,24 @@ footer {
 
 .homePage p {
   --webkit-text-stroke: 1px black;
-};
+}
+.homePagePets {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  gap: 4vmin;
+  left: 50%;
+  top: 50%;
+  transform: translate(var(--right), 0);
+  transition: transform 1s;
+}
 
+.homePagePets > .petImage {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: center;
+}
 /* hover setting */
 
 .navbar-nav .nav-link:hover,
