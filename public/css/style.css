@@ -63,7 +63,8 @@ footer {
   text-decoration: none;
 }
 
-.container-login {
+.container-login,
+.petContainer {
   width: 50%;
   border: 1px solid var(--khaki);
   border-radius: 1rem;
