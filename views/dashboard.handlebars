@@ -1,11 +1,21 @@
 <div class="d-flex align-items-center justify-content-end">
 
 </div>
-{{!-- {{#each habits as |habit|}} --}}
-<div class="container dashboard">
-  date name description
 
+{{!-- show user added habits --}}
+{{#each habits as |habit|}}
+<div class="habitContainer container">
+  <div class="card-header">
+    <h2 class="card-title">{{habit_name}}</h2>
+      <div class="card-body">
+        <p class="card-text">{{habit_description}}</p>
+      </div>
+  <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
+  </div>
 </div>
+{{/each}}
+
+{{!-- container for adding habit --}}
 <div class="container container-login">
   <form class="loginForm">
    <div class="mb-3 row">
@@ -34,8 +44,31 @@
           </select>
       </div>
   </div>
-    <button type="submit" id="habitSubmitBtn" class="btn btn-primary btn-login">Add habit</button>
+    <button id="habitSubmitBtn" class="btn btn-primary btn-login">Add habit</button>
   </form>
 </div>
+
+{{!-- container for pet --}}
+<div class="petContainer container">
+  {{#if pet}}
+  <div class="d-flex justify-content-center">
+    <div class="d-flex align-items-center flex-column">
+      <h2>{{pet.pet_name}}</h2>
+      <img src="{{pet.state.state_image}}" alt="pet">
+    </div>
+  </div>
+  {{else}}
+  <form class="petForm">
+    <div class="row mb-3">
+      <div class="col-sm-12">
+      <label for="petName">Pet name:</label>
+        <input type="text" class="form-control" id="petNameInput" placeholder="">
+      </div>
+    </div>
+    <button id="addPet-button" class="btn btn-primary btn-login">Add Pet</button>
+  </form>
+  {{/if}}
+</div>
+
 
 <script type="module" src="/js/dashboard.js"></script>

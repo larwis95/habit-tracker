@@ -2,8 +2,8 @@ import { getUserHabits, getWeek, getDayName, formatDate } from './api.js';
 
 const addHabit = document.querySelector('#habitSubmitBtn');
 const day = document.getElementById('day-select');
-
-console.log(day.value);
+const deleteBtn = document.getElementById('delete-button');
+const addPet = document.getElementById('addPet-button');
 
 const mapDay = async () => {
   const week = await getWeek();
@@ -40,22 +40,52 @@ const habitSubmit = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/dashboard')
+      document.location.replace('/dashboard');
     }
   }
 
 }
 
+const handleDelete = async (event) => {
+  event.preventDefault();
+  const id = event.target.getAttribute('data-habit-id');
+  const response = await fetch(`/api/habits/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const habitContainer = event.target.closest('.habitContainer');
+  habitContainer.remove();
+};
+
+
+const handleAddPet = async (event) => {
+  event.preventDefault();
+  const pet_name = document.querySelector('#petNameInput').value;
+  if (pet_name) {
+    const response = await fetch('/api/pets/',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          pet_name,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      }
+    }
+};
 
 const main = async () => {
   const week = await mapDay();
   console.log(week);
 };
 
+console.log(day.value);
 main();
 addHabit.addEventListener('click', habitSubmit);
-
-
+deleteBtn?.addEventListener('click', handleDelete);
+addPet?.addEventListener('click', handleAddPet);
 
 
 
