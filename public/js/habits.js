@@ -35,6 +35,7 @@ const closeModal = (event) => {
 
 const updatePetModal = async () => {
   const petImg = document.querySelector('.petImg');
+  const petDiv = document.querySelector('.modalPetDiv');
   const response = await fetch('/api/pets/user', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -43,8 +44,8 @@ const updatePetModal = async () => {
     const pet = await response.json();
     const petState = pet[0].state;
     const petName = document.querySelector('.modal-title');
-    petImg.style.transform = 'rotate(3turn)'
-    petImg.style.transition = 'transform 2s';
+    petDiv.style.transform = 'rotate(3turn)'
+    petDiv.style.transition = 'transform 2s';
     petName.textContent = `${pet[0].pet_name} leveled up!`;
     setTimeout(() => {
       petImg.setAttribute('src', petState.state_image);
@@ -137,13 +138,15 @@ const renderHabits = async (habits) => {
   handleHabitStatus();
 };
 
-const renderWeekContainer = (habits, week) => {
+const renderWeekContainer = async (week) => {
+  const today = await formatDate(new Date(), 'MM/dd/yyyy');
   const weekContainer = document.querySelector('.weeks');
   for (let i = 0; i < week.length; i += 1) {
     const date = week[i];
     const dayContainer = document.createElement('div');
     dayContainer.classList.add(`${date.name}`);
     dayContainer.classList.add('day');
+    if (today === date.day) dayContainer.classList.add('today');
     dayContainer.classList.add('col-lg-4');
     dayContainer.classList.add('col-md-6');
     dayContainer.classList.add('col-sm-12');
@@ -155,10 +158,34 @@ const renderWeekContainer = (habits, week) => {
   }
 };
 
+const handleNoHabits = (habits, pet) => {
+  if (habits.length  < 1) {
+    const weekContainer = document.querySelector('.weeks');
+    const noHabits = document.createElement('h2');
+    noHabits.textContent = 'No Habits Scheduled';
+    weekContainer.appendChild(noHabits);
+  }
+  if (pet.length < 1) {
+    const weekContainer = document.querySelector('.weeks');
+    const noPet = document.createElement('h2');
+    noPet.textContent = 'No Pet, create a pet first!';
+    weekContainer.appendChild(noPet);
+  }
+
+};
+
 const handleDomLoad = async () => {
   const week = await getWeek();
   const habits = await getUserHabits();
+  const pet = await fetch('/api/pets/user', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
   const formattedWeek = [];
+  if (habits.length < 1 || pet.length < 1) {
+    handleNoHabits(habits, pet);
+    return;
+  }
   for (let i = 0; i < week.length; i += 1) {
     const day = week[i];
     const dayName = await getDayName(day);
@@ -166,7 +193,7 @@ const handleDomLoad = async () => {
     formattedWeek.push({ day: formattedDay, name: dayName });
   }
   deleteOldHabits(habits);
-  renderWeekContainer(habits, formattedWeek);
+  renderWeekContainer(formattedWeek);
   renderHabits(habits);
 };
 
@@ -179,6 +206,7 @@ const setPetModal = async () => {
     const pet = await response.json();
     const petImg = document.querySelector('.petImg');
     const petName = document.querySelector('.modal-title');
+    if (!pet[0]) return;
     petName.textContent = pet[0].pet_name;
     oldPetState = pet[0].state.state_image;
     petImg.setAttribute('src', oldPetState);
