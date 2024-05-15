@@ -18,7 +18,7 @@ Pet.init(
     pet_health: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 5
+      defaultValue: 0
     },
     pet_state: {
       type: DataTypes.INTEGER,

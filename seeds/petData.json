@@ -1,7 +1,7 @@
 [
   {
     "pet_name": "Buddy",
-    "pet_health": 5,
+    "pet_health": 4,
     "pet_state": 1,
     "user_id": 1
   },

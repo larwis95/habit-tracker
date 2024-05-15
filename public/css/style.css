@@ -180,6 +180,62 @@ footer {
   margin-bottom: 50px;
 };
 
+.weeks {
+  display: flex;
+  justify-content: center;
+  gap: 2vmin;
+  position: relative;;
+}
+
+.habit {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 1px solid var(--khaki);
+  padding: 10px;
+  background-color: var(--darkerblue);
+  cursor: pointer;
+  &:not(.completed, .failed):hover {
+    transform: scale(1.05);
+    transition: transform 2s;
+  }
+}
+
+.habit h3 {
+  margin: 5px;
+  position: relative;
+}
+
+.habit p {
+  margin: 5px;
+  position: relative;
+}
+
+.completed {
+  border: 1px solid white;
+  background-color: lightgreen;
+  color: black;
+  cursor: default;
+  transition: background-color 1000ms linear;
+  transition: color 1000ms linear;
+}
+
+.failed {
+  border: 1px solid white;
+  background-color: darkred;
+  color: white;
+  cursor: default;
+  transition: background-color 1000ms linear;
+  transition: color 1000ms linear;
+}
+
+.day {
+  border: 1px solid var(--khaki);
+  padding: 5px;
+}
+
 /* ID selectors */
 #homePageLink {
   color: var(--khaki);
