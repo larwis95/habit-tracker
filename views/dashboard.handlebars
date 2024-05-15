@@ -1,31 +1,41 @@
-<div class="dropdown d-flex justify-content-end">
-  <button class="btn btn-secondary dropdown-toggle btn-login" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Days
-    {{!-- animation dropdown icon
-    <div class="dropdown-icon">
-      <span class="left-icon"></span>
-      <span class="right-icon"></span>
-    </div> --}}
-  </button>
-  <ul class="dropdown-menu btn-login">
-    <li><a class="dropdown-item" href="#">Monday</a></li>
-    <li><a class="dropdown-item" href="#">Tuesday</a></li>
-    <li><a class="dropdown-item" href="#">Wednesday</a></li>
-    <li><a class="dropdown-item" href="#">Thursday</a></li>
-    <li><a class="dropdown-item" href="#">Friday</a></li>
-    <li><a class="dropdown-item" href="#">Sunday</a></li>
-  </ul>
+<div class="d-flex align-items-center justify-content-end">
+
 </div>
+{{!-- {{#each habits as |habit|}} --}}
 <div class="container dashboard">
   date name description
 
 </div>
-<div class="container addhabits">
-  <form class="posthabit">
-    habitname
-    description
-    finish habit by dropdown monday-sunday
+<div class="container container-login">
+  <form class="loginForm">
+   <div class="mb-3 row">
+    <label for="habitname" class="col-sm-12 col-md-3 col-lg-6 form-label">Habit name:</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="habitNameInput" placeholder="">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-12 col-md-3 col-lg-6 form-label">Description:</label>
+    <div class="col-sm-12">
+      <textarea class="form-control" id="habitDesInput" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="mb-3 row">
+        <label for="name" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Finish by:</label>
+      <div class="dropdown">
+          <select id="day-select" name="day-select">
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesday</option>
+            <option value="3">Thursday</option>
+            <option value="4" selected>Friday</option>
+            <option value="5">Saturday</option>
+            <option value="6">Sunday</option>
+          </select>
+      </div>
+  </div>
+    <button type="submit" id="habitSubmitBtn" class="btn btn-primary btn-login">Add habit</button>
   </form>
 </div>
 
-<script src="/js/dashboard.js"></script>
+<script type="module" src="/js/dashboard.js"></script>

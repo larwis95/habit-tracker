@@ -8,7 +8,6 @@
   --khaki: #f0e68c;
   --skyblue: #87ceeb;
   --darkerblue: rgba(28, 101, 150, .8);
-
 }
 
 body {
@@ -45,6 +44,10 @@ footer {
   padding: 1% 5% 1% 5%;
 }
 
+.container {
+  margin-bottom: 10%;
+}
+
 .navbar .container-fluid {
   align-items: baseline;
 }
@@ -58,8 +61,14 @@ footer {
 .container-login {
   width: 50%;
   border: 1px solid var(--khaki);
+  border-radius: 1rem;
   padding: 35px;
   background-color: rgba(28, 101, 150, .5);
+  margin-bottom: 10%;
+}
+
+.container .container-login {
+  width: 100%;
 }
 
 .btn-login {
@@ -76,6 +85,7 @@ footer {
 
 .aboutcontainer {
   border: 1px solid var(--khaki);
+  border-radius: 1rem;
   background-color: var(--darkerblue);
   color: var(--khaki);
   padding: 5%;
@@ -89,6 +99,7 @@ footer {
   min-height: 1500px;
   overflow-x: hidden;
   border: 1px solid var(--khaki);
+  border-radius: 1rem;
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -109,6 +120,7 @@ footer {
   margin-bottom: 40px;
   weight: 100%;
 }
+
 .homePagePets {
   display: flex;
   justify-content: center;
@@ -118,6 +130,7 @@ footer {
   transform: translate(var(--right), 0);
   transition: transform 2s;
 }
+
 .homePagePets > .petImage {
   width: 40vmin;
   height: 56vmin;

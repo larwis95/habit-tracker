@@ -11,7 +11,11 @@ const handleLogin = async(event) => {
     headers: { "Content-Type": "application/json" }
   })
   if (response.ok) {
+<<<<<<< HEAD
     document.location.replace('/');
+=======
+    document.location.replace('/dashboard');
+>>>>>>> main
   }
 };
 
