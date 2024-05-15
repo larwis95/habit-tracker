@@ -16,6 +16,11 @@ body {
   color: white;
 }
 
+body .modal-open {
+  overflow: hidden;
+  position: absolute;
+}
+
 header {
   text-align: center;
   background: var(--navbar);
@@ -134,7 +139,7 @@ footer {
 .homePagePets > .petImage {
   width: 40vmin;
   height: 56vmin;
-  object-fit: 100% 50%
+  object-fit: 100% 50%;
   object-position: center;
 }
 
@@ -190,6 +195,7 @@ footer {
 .habit {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   flex-wrap: wrap;
   flex-direction: row;
@@ -219,7 +225,7 @@ footer {
   color: black;
   cursor: default;
   transition: background-color 1000ms linear;
-  transition: color 1000ms linear;
+  transition: color 1000ms ease;
 }
 
 .failed {
@@ -228,12 +234,30 @@ footer {
   color: white;
   cursor: default;
   transition: background-color 1000ms linear;
-  transition: color 1000ms linear;
+  transition: color 1000ms ease;
 }
 
 .day {
   border: 1px solid var(--khaki);
   padding: 5px;
+  min-height: 157.2px;
+}
+
+.modal-content {
+  background-color: var(--darkerblue);
+  color: var(--khaki);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--khaki);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--khaki);
+}
+
+.close {
+  color: var(--khaki);
 }
 
 /* ID selectors */
