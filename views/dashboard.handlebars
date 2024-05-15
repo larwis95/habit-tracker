@@ -1,8 +1,41 @@
-<ul>
-  {{#if logged_in}}
-    <li><a action="/api/users/logout" method="GET">Logout</a></li>
-  {{else}}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Signup</a></li>
-  {{/if}}
-</ul>
+<div class="d-flex align-items-center justify-content-end">
+
+</div>
+{{!-- {{#each habits as |habit|}} --}}
+<div class="container dashboard">
+  date name description
+
+</div>
+<div class="container container-login">
+  <form class="loginForm">
+   <div class="mb-3 row">
+    <label for="habitname" class="col-sm-12 col-md-3 col-lg-6 form-label">Habit name:</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="habitNameInput" placeholder="">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-12 col-md-3 col-lg-6 form-label">Description:</label>
+    <div class="col-sm-12">
+      <textarea class="form-control" id="habitDesInput" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="mb-3 row">
+        <label for="name" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Finish by:</label>
+      <div class="dropdown">
+          <select id="day-select" name="day-select">
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesday</option>
+            <option value="3">Thursday</option>
+            <option value="4" selected>Friday</option>
+            <option value="5">Saturday</option>
+            <option value="6">Sunday</option>
+          </select>
+      </div>
+  </div>
+    <button type="submit" id="habitSubmitBtn" class="btn btn-primary btn-login">Add habit</button>
+  </form>
+</div>
+
+<script type="module" src="/js/dashboard.js"></script>

@@ -1,14 +1,14 @@
 [
   {
-    "state_image": "linktosomeimage.com"
+    "state_image": "../images/pets/state1.gif"
   },
   {
-    "state_image": "linktosomeimage2.com"
+    "state_image": "../images/pets/state2.gif"
   },
   {
-    "state_image": "linktosomeimage3.com"
+    "state_image": "../images/pets/state3.gif"
   },
   {
-    "state_image": "linktosomeimage4.com"
+    "state_image": "../images/pets/state4.gif"
   }
 ]

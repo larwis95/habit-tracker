@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 const router = require('express').Router();
-const { Pet } = require('../../models');
+const { Pet, State } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -14,8 +15,9 @@ router.get('/user', async (req, res) => {
   try {
     const petData = await Pet.findAll({
       where: {
-        user_id: req.params.user_id,
+        user_id: req.session.user_id,
       },
+      include: { model: State }
     });
 
     if (!petData) {
@@ -26,6 +28,7 @@ router.get('/user', async (req, res) => {
     res.status(200).json(petData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -45,7 +48,7 @@ router.put('/', async (req, res) => {
   try {
     const petData = await Pet.update(req.body, {
       where: {
-        user_id: req.params.user_id,
+        user_id: req.session.user_id,
       },
     });
 
@@ -57,6 +60,7 @@ router.put('/', async (req, res) => {
     res.status(200).json(petData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

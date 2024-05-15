@@ -1,11 +1,36 @@
-<ul>
   <div class = "container mt-5 homePage">
     <div class = "row">
-      <div class = "col-12">
+      <div class = "col-12 homePageIntro">
         <h1> Welcome to the Habit Tracker </h1>
         <p>Everyone has things they want to improve on, Habit Tracker has you covered.</p>
-        <p>Scroll to find out what we are about!</p>
       </div>
+  <div class="row">
+    <div class = "col-12 underPets">
+          <div class='homePagePets mt-5'>
+          <img src = "../images/pets/state1.gif" alt = "pets" class = "petImage">
+          <img src = "../images/pets/state2.gif" alt = "pets" class = "petImage">
+          <img src = "../images/pets/state3.gif" alt = "pets" class = "petImage">
+          <img src = "../images/pets/state4.gif" alt = "pets" class = "petImage">
+        </div>
+      <h2 class="mt-2">Complete habits and level up!</h2>
     </div>
   </div>
-</ul>
+  <div class="row">
+    <div class = "col-12 homePageAbout d-flex">
+      <h2>What is Habit Tracker?</h2>
+      <p>Habit Tracker is a web application that helps you track your habits and goals. You can create habits, set goals, and track your progress. You can also earn xp for completing habits and level up your pet!</p>
+    </div>
+  {{#if logged_in}}
+  {{else}}
+  <div class="row signuploginRow">
+    <div class = "col-12 d-flex homePageLinkContainer">
+    <h2 id="linkh2">Get Started Today</h2>
+    <p><a href='/login' id="homePageLink">Login</a> or <a href='/signup' id="homePageSignup">Signup</a></p>
+  </div>
+  </div>
+  {{/if}}
+
+</div>
+</div>
+</div>
+<script src="/js/homepage.js"></script>
