@@ -4,6 +4,7 @@ import { getUserHabits, getWeek, getDayName, formatDate, isDateBefore, isSameWee
 
 const weekEl = document.querySelector('.weeks');
 const petModal = document.querySelector('.modal');
+
 let oldPetState;
 
 const deleteOldHabits = async (habits) => {
@@ -21,6 +22,17 @@ const deleteOldHabits = async (habits) => {
   }
 };
 
+const closeModal = (event) => {
+  event.stopPropagation();
+  const body = document.querySelector('body');
+  const modalClose = document.querySelector('.close');
+  const modalBtn = document.querySelector('.modalBtn');
+  if (event.target === modalClose || event.target === modalBtn) {
+    petModal.style.display = 'none';
+    body.classList.remove('modal-open');
+  }
+};
+
 const updatePetModal = async () => {
   const petImg = document.querySelector('.petImg');
   const response = await fetch('/api/pets/user', {
@@ -30,11 +42,13 @@ const updatePetModal = async () => {
   if (response.ok) {
     const pet = await response.json();
     const petState = pet[0].state;
-    petImg.style.transform = 'rotate(2turn)'
+    const petName = document.querySelector('.modal-title');
+    petImg.style.transform = 'rotate(3turn)'
     petImg.style.transition = 'transform 2s';
+    petName.textContent = `${pet[0].pet_name} leveled up!`;
     setTimeout(() => {
       petImg.setAttribute('src', petState.state_image);
-    }, 2000);
+    }, 1600);
   }
 };
 
@@ -61,6 +75,8 @@ const handleAddExperience = async () => {
       body: JSON.stringify({ pet_state: petState }),
       headers: { 'Content-Type': 'application/json' },
     });
+    const body = document.querySelector('body');
+    body.classList.add('modal-open');
     petModal.style.display = 'block';
     updatePetModal();
   }
@@ -108,8 +124,10 @@ const renderHabits = async (habits) => {
       habitContainer.classList.add('habit');
       if (habit.completed_date) habitContainer.classList.add('completed');
       const nameEl = document.createElement('h3');
+      nameEl.classList.add('text-start');
       nameEl.textContent = habit.habit_name;
       const descriptionEl = document.createElement('p');
+      descriptionEl.classList.add('text-center');
       descriptionEl.textContent = habit.habit_description;
       habitContainer.appendChild(nameEl);
       habitContainer.appendChild(descriptionEl);
@@ -152,7 +170,7 @@ const handleDomLoad = async () => {
   renderHabits(habits);
 };
 
-const setPetImg = async () => {
+const setPetModal = async () => {
   const response = await fetch('/api/pets/user', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -160,12 +178,15 @@ const setPetImg = async () => {
   if (response.ok) {
     const pet = await response.json();
     const petImg = document.querySelector('.petImg');
+    const petName = document.querySelector('.modal-title');
+    petName.textContent = pet[0].pet_name;
     oldPetState = pet[0].state.state_image;
     petImg.setAttribute('src', oldPetState);
   }
 };
 
 document.addEventListener('DOMContentLoaded', handleDomLoad);
-document.addEventListener('DOMContentLoaded', setPetImg);
+document.addEventListener('DOMContentLoaded', setPetModal);
+petModal.addEventListener('click', closeModal);
 weekEl.addEventListener('click', handleHabitClick);
 

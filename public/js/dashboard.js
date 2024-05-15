@@ -26,17 +26,16 @@ const habitSubmit = async (event) => {
 
   const week = await mapDay();
   const date = week[daySelected];
-  const completed_date = date.date;
+  const scheduled_date = date.date;
 
-  console.log(completed_date);
 
-  if (habit_name && habit_description && completed_date) {
-    const response = await fetch('/api/users', {
+  if (habit_name && habit_description && scheduled_date) {
+    const response = await fetch('/api/habits/', {
       method: 'POST',
       body: JSON.stringify({
         habit_name,
         habit_description,
-        completed_date
+        scheduled_date
       }),
       headers: { 'Content-Type': 'application/json' },
     });

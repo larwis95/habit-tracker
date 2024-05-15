@@ -58,7 +58,10 @@ router.get('/habits', withAuth, async (req, res) => {
 });
 
 router.get('/about', async (req, res) => {
-  res.render('about');
+  res.render('about',
+  {
+    logged_in: req.session.logged_in,
+  });
 });
 
 module.exports = router;
