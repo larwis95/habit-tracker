@@ -194,6 +194,7 @@ footer {
 }
 
 .habit {
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,8 +206,8 @@ footer {
   background-color: var(--darkerblue);
   cursor: pointer;
   &:not(.completed, .failed):hover {
-    transform: scale(1.05);
-    transition: transform 2s;
+    box-shadow: 0 0 5px 2px var(--khaki);
+    transition: box-shadow 2s ease;
   }
 }
 
@@ -240,13 +241,22 @@ footer {
 
 .day {
   border: 1px solid var(--khaki);
-  padding: 5px;
+  padding: 10px;
   min-height: 157.2px;
+  margin: 2px;
+}
+
+.modal {
+  background-color: var(--darkerblue);
 }
 
 .modal-content {
   background-color: var(--darkerblue);
   color: var(--khaki);
+}
+
+.modal-body {
+  min-height: 400px;
 }
 
 .modal-header {
@@ -259,6 +269,16 @@ footer {
 
 .close {
   color: var(--khaki);
+}
+
+.petImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.today {
+  border: 2px solid green;
 }
 
 /* ID selectors */
