@@ -201,6 +201,7 @@ ul {
   border-right: 3px solid var(--border);
   padding-right: 5px;
   margin-right: 5px;
+  font-size: 3rem;
 }
 
 .homePageAbout p {
@@ -282,8 +283,14 @@ ul {
   background-color: var(--darkerBlue);
 }
 
+.modal-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: xx-large ;
+  color: var(--text01);
+}
+
 .modal-content {
-  background-color: var(--darkerBlue);
+  background-color: var(--background);
   color: var(--border);
 }
 
@@ -408,6 +415,10 @@ h7 a:hover {
 #homePageSignup:hover {
   color: var(--skyblue);
   text-decoration: none;
+}
+
+.close:hover {
+  color: red;
 }
 
 /*placeholder settings*/
