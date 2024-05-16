@@ -2,8 +2,8 @@
 /* eslint-disable no-await-in-loop */
 import { getUserHabits, getWeek, getDayName, formatDate, isDateBefore, isSameWeek, mapPetStates, differenceInDays } from './api.js';
 
-const weekEl = document.querySelector('.weeks');
 const petModal = document.querySelector('.modal');
+
 
 let oldPetState;
 
@@ -86,23 +86,23 @@ const handleAddExperience = async () => {
 };
 
 const handleHabitClick = async (event) => {
-  event.stopPropagation();
-  if (!event.target.classList.contains('habit')) return;
-  if (event.target.classList.contains('completed') || event.target.classList.contains('failed')) return
-    const habitId = event.target.getAttribute('data-habit-id');
+  const closestHabit = event.target.closest('.habit');
+  if (closestHabit.classList.contains('completed') || closestHabit.classList.contains('failed')) return
+    const habitId = closestHabit.getAttribute('data-habit-id');
     const response = await fetch(`/api/habits/${habitId}`, {
       method: 'PUT',
       body: JSON.stringify({ completed_date: new Date()}),
       headers: { 'Content-Type': 'application/json' },
     });
   if (response.ok) {
-    event.target.classList.add('completed');
+    closestHabit.classList.add('completed');
     handleAddExperience();
   }
 };
 
 const handleHabitStatus = async () => {
   const habits = document.querySelectorAll('.habit');
+  habits.forEach((habit) => { habit.addEventListener('click', handleHabitClick) });
   const today = await formatDate(new Date(), 'MM/dd/yyyy');
   for (let i = 0; i < habits.length; i += 1) {
     const habit = habits[i];
@@ -227,7 +227,8 @@ const setPetModal = async () => {
   }
 };
 
+
 document.addEventListener('DOMContentLoaded', handleDomLoad);
 document.addEventListener('DOMContentLoaded', setPetModal);
 petModal.addEventListener('click', closeModal);
-weekEl.addEventListener('click', handleHabitClick);
+
