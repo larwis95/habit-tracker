@@ -15,6 +15,10 @@ State.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    type_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize,
