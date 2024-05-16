@@ -1,13 +1,17 @@
-import { getUserHabits, getWeek, getDayName, formatDate, isDateBefore } from './api.js';
+/* eslint-disable no-shadow */
+/* eslint-disable import/extensions */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable camelcase */
+import { getWeek, getDayName, formatDate, isDateBefore } from './api.js';
 
 const addHabit = document.querySelector('#habitSubmitBtn');
 const day = document.getElementById('day-select');
-const deleteBtn = document.getElementById('delete-button');
+const deleteBtn = document.querySelectorAll('#delete-button');
 const addPet = document.getElementById('addPet-button');
 
 const mapDay = async () => {
   const week = await getWeek();
-  for (let i = 0; i < week.length; i++) {
+  for (let i = 0; i < week.length; i += 1) {
     const day = await getDayName(week[i]);
     week[i] = {
       date: await formatDate(week[i], 'MM/dd/yyyy'),
@@ -48,7 +52,7 @@ const habitSubmit = async (event) => {
 const handleDelete = async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute('data-habit-id');
-  const response = await fetch(`/api/habits/${id}`, {
+  await fetch(`/api/habits/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -71,17 +75,14 @@ const handleAddPet = async (event) => {
       });
       if (response.ok) {
         document.location.replace('/dashboard');
-      } else {
-        const err = await response.json();
-        console.log(err.message);
       }
     }
 };
 
-const handleDOMContentLoaded = async (event) => {
+const handleDOMContentLoaded = async () => {
   const weekMap = await mapDay();
   const today = await formatDate(new Date(), 'MM/dd/yyyy');
-  for (let i = 0; i < weekMap.length; i++) {
+  for (let i = 0; i < weekMap.length; i += 1) {
     if(await isDateBefore(today, weekMap[i].date) || weekMap[i].date === today) {
       const option = document.createElement('option');
       option.setAttribute('value', i);
@@ -91,35 +92,8 @@ const handleDOMContentLoaded = async (event) => {
   }
 };
 
-
-const main = async () => {
-  const week = await mapDay();
-  console.log(week);
-};
-
-console.log(day.value);
-main();
 addHabit.addEventListener('click', habitSubmit);
-deleteBtn?.addEventListener('click', handleDelete);
+deleteBtn?.forEach((button) => button.addEventListener('click', handleDelete));
 addPet?.addEventListener('click', handleAddPet);
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
