@@ -1,6 +1,4 @@
-<div class="d-flex align-items-center justify-content-end">
-
-</div>
+<div class="bodyContainer">
 
 {{!-- show user added habits --}}
 {{#if habits}}
@@ -8,23 +6,23 @@
 <div class="d-inline-flex mb-3 mr-3 habitContainer">
   <div class="card">
     <div class="card-body">
-      <h3 class="card-title">{{habit_name}}</h3>
-      <p class="card-text">{{habit_description}}</p>
+      <h3 class="card-title">♦ {{habit_name}}</h3>
+      <p class="card-text">⟹ {{habit_description}}</p>
       <p class="card-text">Finish by: {{handlebarsDate scheduled_date}}</p>
     <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
     </div>
   </div>
-</div>
-{{/each}}
-{{else}}
-<div class="d-inline-flex mb-3 mr-3">
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title">No habit added yet!</h3>
+  {{/each}}
+  {{else}}
+  <div class="d-inline-flex mb-3 mr-3">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">No habit added yet!</h3>
+      </div>
     </div>
   </div>
+  {{/if}}
 </div>
-{{/if}}
 {{!-- container for adding habit --}}
 <div class="container container-login">
   <form class="loginForm">
@@ -41,12 +39,10 @@
     </div>
   </div>
   <div class="mb-3 row">
-        <label for="name" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Finish by:</label>
-      <div class="dropdown">
-          <select id="day-select" name="day-select">
-
-          </select>
-      </div>
+    <label for="name" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Finish by:</label>
+      <select id="day-select" name="day-select">
+          {{!-- where day picker will appear --}}
+      </select>
   </div>
     <button id="habitSubmitBtn" class="btn btn-primary btn-login">Add habit</button>
   </form>
