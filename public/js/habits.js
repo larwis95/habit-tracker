@@ -159,13 +159,14 @@ const renderWeekContainer = async (week) => {
 };
 
 const handleNoHabits = (habits, pet) => {
+  console.log(pet[0])
   if (habits.length  < 1) {
     const weekContainer = document.querySelector('.weeks');
     const noHabits = document.createElement('h2');
     noHabits.textContent = 'No Habits Scheduled';
     weekContainer.appendChild(noHabits);
   }
-  if (pet.length < 1) {
+  if (!pet[0]) {
     const weekContainer = document.querySelector('.weeks');
     const noPet = document.createElement('h2');
     noPet.textContent = 'No Pet, create a pet first!';
@@ -182,7 +183,7 @@ const handleDomLoad = async () => {
     headers: { 'Content-Type': 'application/json' },
   });
   const formattedWeek = [];
-  if (habits.length < 1 || pet.length < 1) {
+  if (habits.length < 1 || !pet[0]) {
     handleNoHabits(habits, pet);
     return;
   }
@@ -217,4 +218,3 @@ document.addEventListener('DOMContentLoaded', handleDomLoad);
 document.addEventListener('DOMContentLoaded', setPetModal);
 petModal.addEventListener('click', closeModal);
 weekEl.addEventListener('click', handleHabitClick);
-
