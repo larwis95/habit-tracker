@@ -1,15 +1,15 @@
 <div class="bodyContainer">
 
 {{!-- show user added habits --}}
-  {{#if habits}}
-  {{#each habits as |habit|}}
-  <div class="d-inline-flex mb-3 mr-3">
-    <div class="card habitContainer">
-      <div class="card-body">
-        <h3 class="card-title">♦ {{habit_name}}</h3>
-        <p class="card-text">⟹ {{habit_description}}</p>
-      <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
-      </div>
+{{#if habits}}
+{{#each habits as |habit|}}
+<div class="d-inline-flex mb-3 mr-3 habitContainer">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">♦ {{habit_name}}</h3>
+      <p class="card-text">⟹ {{habit_description}}</p>
+      <p class="card-text">Finish by: {{handlebarsDate scheduled_date}}</p>
+    <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
     </div>
   </div>
   {{/each}}
@@ -54,7 +54,12 @@
   <div class="d-flex justify-content-center">
     <div class="d-flex align-items-center flex-column">
       <h2>{{pet.pet_name}}</h2>
-      <img src="{{pet.state.state_image}}" alt="pet">
+      <img src="{{pet.state.state_image}}" alt="{{pet.pet_name}}" id="activePet">
+      <p>Experience: {{pet.pet_health}}</p>
+      <p>Level 1: 0-4 exp</p>
+      <p>Level 2: 5-9 exp</p>
+      <p>Level 3: 10-14 exp</p>
+      <p>Level 4: 15-20+ exp</p>
     </div>
   </div>
   {{else}}
@@ -64,7 +69,15 @@
       <label for="petName">Pet name:</label>
         <input type="text" class="form-control" id="petNameInput" placeholder="">
       </div>
+      <div class="col-sm-12" id="petCheckBox">
+        <label for="petType">Pet type:</label>
+        <div class='petSelection'>
+          <img src="../images/pets/orangeState1.gif" id="orangePetImg" alt="orange pet" class="unselectedImg petformImg" data-type="orange">
+          <img src="../images/pets/greenState1.gif" id="greenPetImg" alt="green pet" class="unselectedImg petformImg" data-type="green">
+        </div>
+      </div>
     </div>
+
     <button id="addPet-button" class="btn btn-primary btn-login">Add Pet</button>
   </form>
   {{/if}}

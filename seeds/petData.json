@@ -3,24 +3,28 @@
     "pet_name": "Buddy",
     "pet_health": 4,
     "pet_state": 1,
-    "user_id": 1
+    "user_id": 1,
+    "pet_type": "orange"
   },
   {
     "pet_name": "Charizard",
     "pet_health": 4,
-    "pet_state": 2,
-    "user_id": 2
+    "pet_state": 5,
+    "user_id": 2,
+    "pet_type": "green"
   },
   {
     "pet_name": "Pikachu",
     "pet_health": 3,
-    "pet_state": 3,
-    "user_id": 3
+    "pet_state": 1,
+    "user_id": 3,
+    "pet_type": "orange"
   },
   {
     "pet_name": "Squirtle",
     "pet_health": 2,
-    "pet_state": 4,
-    "user_id": 4
+    "pet_state": 5,
+    "user_id": 4,
+    "pet_type": "green"
   }
 ]

@@ -29,6 +29,12 @@ Pet.init(
         key: 'id'
       }
     },
+    pet_type: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'orange'
+
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

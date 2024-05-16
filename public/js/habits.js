@@ -54,8 +54,8 @@ const updatePetModal = async () => {
 };
 
 const handleAddExperience = async () => {
-  const stateMap = mapPetStates();
   let petExperience = 0;
+  let stateMap;
   const response = await fetch('/api/pets/user', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -63,6 +63,8 @@ const handleAddExperience = async () => {
   if (response.ok) {
     const pet = await response.json();
     petExperience = pet[0].pet_health + 1;
+    const type = pet[0].pet_type
+    stateMap = await mapPetStates(type);
     await fetch('/api/pets', {
       method: 'PUT',
       body: JSON.stringify({ pet_health: petExperience }),
@@ -156,7 +158,6 @@ const renderWeekContainer = async (week) => {
 };
 
 const handleNoHabits = (habits, pet) => {
-  console.log(pet[0])
   if (habits.length  < 1) {
     const weekContainer = document.querySelector('.weeks');
     const noHabits = document.createElement('h2');

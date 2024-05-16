@@ -80,12 +80,53 @@ const differenceInDays = async (date1, date2) => {
   throw new Error('Failed to get day difference');
 };
 
-const mapPetStates = () => {
-  const stateMap = new Map();
-  stateMap.set(5, 2);
-  stateMap.set(10, 3);
-  stateMap.set(15, 4);
-  return stateMap;
+const getPetTypes = async () => {
+  const response = await fetch('/api/states', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error('Failed to get pet types');
+};
+
+const sortTypes = (types) => {
+  const orange = [];
+  const green = [];
+  for (let i = 0; i < types.length; i += 1) {
+    const type = types[i];
+    if (type.type_name === 'orange') {
+      orange.push(type);
+    } else {
+      green.push(type);
+    }
+  }
+  orange.shift();
+  green.shift();
+  return { orange, green };
 }
+
+const mapPetStates = async (type) => {
+  const stateMap = new Map();
+  const types = await getPetTypes();
+  const { orange, green } = sortTypes(types);
+  let exp = 5
+  if (type === 'orange') {
+    for (let i = 0; i < orange.length; i += 1) {
+      const state = orange[i];
+      stateMap.set(exp, state.id);
+      exp += 5;
+    }
+  }
+  if (type === 'green') {
+    for (let i = 0; i < green.length; i += 1) {
+      const state = green[i];
+      stateMap.set(exp, state.id);
+      exp += 5;
+    }
+  }
+  return stateMap;
+};
 
 export { getUserHabits, getWeek, getDayName, formatDate, isDateBefore, isSameWeek, mapPetStates, differenceInDays }

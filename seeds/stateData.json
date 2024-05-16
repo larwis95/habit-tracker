@@ -1,14 +1,34 @@
 [
   {
-    "state_image": "../images/pets/state1.gif"
+    "state_image": "../images/pets/orangeState1.gif",
+    "type_name": "orange"
   },
   {
-    "state_image": "../images/pets/state2.gif"
+    "state_image": "../images/pets/orangeState2.gif",
+    "type_name": "orange"
   },
   {
-    "state_image": "../images/pets/state3.gif"
+    "state_image": "../images/pets/orangeState3.gif",
+    "type_name": "orange"
   },
   {
-    "state_image": "../images/pets/state4.gif"
+    "state_image": "../images/pets/orangeState4.gif",
+    "type_name": "orange"
+  },
+  {
+    "state_image": "../images/pets/greenState1.gif",
+    "type_name": "green"
+  },
+  {
+    "state_image": "../images/pets/greenState2.gif",
+    "type_name": "green"
+  },
+  {
+    "state_image": "../images/pets/greenState3.gif",
+    "type_name": "green"
+  },
+  {
+    "state_image": "../images/pets/greenState4.gif",
+    "type_name": "green"
   }
 ]

@@ -55,6 +55,20 @@ footer {
   background-image: var(--footer);
 }
 
+select {
+  background-color: var(--gray);
+  color: var(--khaki);
+}
+
+option {
+  background-color: var(--gray);
+  color: var(--khaki);
+}
+
+ul {
+  list-style-type: none;
+}
+
 /* class */
 
 .navbar {
@@ -275,6 +289,9 @@ footer {
 
 .modal-body {
   min-height: 400px;
+  background-image: url("../images/pixel-bg.jpg");
+  background-size: cover;
+  background-position: top;
 }
 
 .modal-header {
@@ -307,6 +324,19 @@ footer {
   padding:5px 5px ;
 }
 
+.petformImg {
+  display: inline-block;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--khaki);
+  transition: border 1000ms linear;
+}
+
+.selectedImg {
+  border: 2px solid green;
+  transition: border 1000ms linear;
+}
 /* ID selectors */
 #homePageLink,
 #homePageSignup {
@@ -318,6 +348,13 @@ footer {
 
 #linkh2 {
   -webkit-text-stroke: 1px black;
+}
+
+#activePet {
+  border: 1px solid var(--khaki);
+  background-image: url("../images/pixel-bg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 /* hover setting */
@@ -382,6 +419,15 @@ h7 a:hover {
 
   .day {
     min-height: fit-content;
+  }
+
+  #activePet {
+    width:100%;
+    height: 100%;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    gap: 5px;
   }
 }
 
