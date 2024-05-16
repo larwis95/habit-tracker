@@ -1,9 +1,9 @@
-<div class="bodyContainer">
+<div class="bodyBox">
 
 {{!-- show user added habits --}}
 {{#if habits}}
 {{#each habits as |habit|}}
-<div class="d-inline-flex mb-3 mr-3 habitContainer">
+<div class="d-inline-flex habitContainer">
   <div class="card">
     <div class="card-body">
       <h3 class="card-title">♦ {{habit_name}}</h3>
@@ -15,7 +15,7 @@
 </div>
   {{/each}}
   {{else}}
-  <div class="d-inline-flex mb-3 mr-3">
+  <div class="d-inline-flex">
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">No habit added yet!</h3>
