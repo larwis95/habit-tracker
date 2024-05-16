@@ -71,6 +71,9 @@ const handleAddPet = async (event) => {
       });
       if (response.ok) {
         document.location.replace('/dashboard');
+      } else {
+        const err = await response.json();
+        console.log(err.message);
       }
     }
 };

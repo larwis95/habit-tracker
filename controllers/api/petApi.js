@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
     });
     res.status(200).json(petData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({message: err.message});
   }
 });
 
