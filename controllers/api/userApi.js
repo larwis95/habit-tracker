@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
 
       res.status(200).json({username: userData.username, email: userData.email, id: userData.id, message: 'You are now logged in!'});
     });
-    if (!userData) {
-      res.status(400).json({ message: 'Email must be a valid email.' });
-      return;
-    }
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.log(err.constructor.name);
+    if (err.constructor.name == "ValidationError") {
+      res.status(400).json({ message: "Invalid Email"});
+    } else {
+      res.status(500).json(err);
+    }
   }
 });
 
