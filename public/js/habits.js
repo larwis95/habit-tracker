@@ -178,10 +178,11 @@ const handleNoHabits = (habits, pet) => {
 const handleDomLoad = async () => {
   const week = await getWeek();
   const habits = await getUserHabits();
-  const pet = await fetch('/api/pets/user', {
+  const response = await fetch('/api/pets/user', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
+  const pet = await response.json();
   const formattedWeek = [];
   if (habits.length < 1 || !pet[0]) {
     handleNoHabits(habits, pet);
