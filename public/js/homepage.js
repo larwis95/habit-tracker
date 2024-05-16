@@ -27,6 +27,7 @@ const scrollHandler = () => {
 
 const scrollEndHandler = () => {
   lastScroll = window.scrollY;
+  petContainter.style.setProperty('--right', `0%`);
 };
 
 const handleDOMContentLoaded = async () => {
