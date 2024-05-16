@@ -53,6 +53,11 @@ footer {
   margin-bottom: 10%;
 }
 
+.card {
+  background-color: var(--darkerblue);
+  border: 1px solid var(--khaki);
+  border-radius: 1rem;
+}
 .navbar .container-fluid {
   align-items: baseline;
 }
@@ -69,7 +74,7 @@ footer {
   border: 1px solid var(--khaki);
   border-radius: 1rem;
   padding: 35px;
-  background-color: rgba(28, 101, 150, .5);
+  background-color: var(--darkerblue);
   margin-bottom: 10%;
 }
 

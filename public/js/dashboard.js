@@ -1,4 +1,4 @@
-import { getUserHabits, getWeek, getDayName, formatDate } from './api.js';
+import { getUserHabits, getWeek, getDayName, formatDate, isDateBefore } from './api.js';
 
 const addHabit = document.querySelector('#habitSubmitBtn');
 const day = document.getElementById('day-select');
@@ -15,8 +15,7 @@ const mapDay = async () => {
     }
   }
   return week;
-
-}
+};
 
 const habitSubmit = async (event) => {
   event.preventDefault();
@@ -76,6 +75,20 @@ const handleAddPet = async (event) => {
     }
 };
 
+const handleDOMContentLoaded = async (event) => {
+  const weekMap = await mapDay();
+  const today = await formatDate(new Date(), 'MM/dd/yyyy');
+  for (let i = 0; i < weekMap.length; i++) {
+    if(await isDateBefore(today, weekMap[i].date) || weekMap[i].date === today) {
+      const option = document.createElement('option');
+      option.setAttribute('value', i);
+      option.textContent = weekMap[i].name;
+      day.appendChild(option);
+    }
+  }
+};
+
+
 const main = async () => {
   const week = await mapDay();
   console.log(week);
@@ -87,7 +100,7 @@ addHabit.addEventListener('click', habitSubmit);
 deleteBtn?.addEventListener('click', handleDelete);
 addPet?.addEventListener('click', handleAddPet);
 
-
+document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
 
 
 

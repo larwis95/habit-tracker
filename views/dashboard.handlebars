@@ -4,13 +4,13 @@
 
 {{!-- show user added habits --}}
 {{#each habits as |habit|}}
-<div class="habitContainer container">
-  <div class="card-header">
-    <h2 class="card-title">{{habit_name}}</h2>
-      <div class="card-body">
-        <p class="card-text">{{habit_description}}</p>
-      </div>
-  <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
+<div class="d-inline-flex mb-3 mr-3">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{habit_name}}</h3>
+      <p class="card-text">{{habit_description}}</p>
+    <button id="delete-button" type="button btn-danger" class="btn btn-danger" data-habit-id="{{id}}">Delete</button>
+    </div>
   </div>
 </div>
 {{/each}}
@@ -34,13 +34,7 @@
         <label for="name" class="col-sm-12 col-md-3 col-lg-6 col-form-label">Finish by:</label>
       <div class="dropdown">
           <select id="day-select" name="day-select">
-            <option value="0">Monday</option>
-            <option value="1">Tuesday</option>
-            <option value="2">Wednesday</option>
-            <option value="3">Thursday</option>
-            <option value="4" selected>Friday</option>
-            <option value="5">Saturday</option>
-            <option value="6">Sunday</option>
+
           </select>
       </div>
   </div>
