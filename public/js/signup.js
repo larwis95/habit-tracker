@@ -13,7 +13,7 @@ const handleSignup = async (event) => {
         headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
       console.log("here");
       const errorEl2 = document.createElement("p");
