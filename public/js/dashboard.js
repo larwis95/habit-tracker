@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable camelcase */
-import { getWeek, getDayName, formatDate, isDateBefore } from './api.js';
+import { getWeek, getDayName, formatDate, isDateBefore, differenceInDays } from './api.js';
 
 const addHabit = document.querySelector('#habitSubmitBtn');
 const day = document.getElementById('day-select');
@@ -21,6 +21,29 @@ const mapDay = async () => {
     }
   }
   return week;
+};
+
+const deleteOldHabits = async (habits) => {
+  const today = await formatDate(new Date(), 'MM/dd/yyyy');
+  for (let i = 0; i < habits.length; i += 1) {
+    const habit = habits[i];
+    const habitDate = habit.scheduled_date;
+    const formattedHabitDate = await formatDate(habitDate, 'MM/dd/yyyy');
+    if ((await isDateBefore(formattedHabitDate, today) && await differenceInDays(today, formattedHabitDate) > 7)) {
+      await fetch(`/api/habits/${habit.id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const habitContainer = document.querySelector(`[data-habit-id="${habit.id}"]`).closest('.habitContainer');
+      habitContainer.remove();
+    }
+  }
+};
+
+const getHabits = async () => {
+  const response = await fetch('/api/habits/user');
+  const habits = await response.json();
+  await deleteOldHabits(habits);
 };
 
 const habitSubmit = async (event) => {
@@ -129,4 +152,5 @@ deleteBtn?.forEach((button) => button.addEventListener('click', handleDelete));
 addPet?.addEventListener('click', handleAddPet);
 imgSelections?.forEach((img) => img.addEventListener('click', handlePetSelection));
 
+document.addEventListener('DOMContentLoaded', getHabits);
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);

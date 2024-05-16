@@ -19,8 +19,11 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     console.log(err.constructor.name);
-    if (err.constructor.name == "ValidationError") {
+    if (err.message.includes('email')) {
+      console.log(err.message)
       res.status(400).json({ message: "Invalid Email"});
+    } else if (err.message.includes('password')) {
+      res.status(400).json({ message: "Password must be at least 8 characters long"});
     } else {
       res.status(500).json(err);
     }
@@ -54,7 +57,7 @@ router.post('/login', async (req, res) => {
       res.status(200).json({username: userData.username, id: userData.id, message: 'You are now logged in!'});
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 

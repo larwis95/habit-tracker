@@ -1,7 +1,7 @@
 const signupBtn = document.querySelector("#signupBtn");
 const signupForm = document.querySelector(".loginForm");
+
 const handleSignup = async (event) => {
-  console.log(signupForm);
   event.preventDefault();
   const username = document.querySelector("#usernameSignup").value.trim();
   const email = document.querySelector("#emailSignup").value.trim();
@@ -15,7 +15,6 @@ const handleSignup = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      console.log("here");
       const errorEl2 = document.createElement("p");
       const error2 = await response.json();
       errorEl2.textContent = error2.message;

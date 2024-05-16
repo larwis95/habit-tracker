@@ -13,7 +13,7 @@ const deleteOldHabits = async (habits) => {
     const habit = habits[i];
     const habitDate = habit.scheduled_date;
     const formattedHabitDate = await formatDate(habitDate, 'MM/dd/yyyy');
-    if (await isDateBefore(today, formattedHabitDate) && await differenceInDays(today, formattedHabitDate) > 7) {
+    if ((await isDateBefore(formattedHabitDate, today) && await differenceInDays(today, formattedHabitDate) > 7)) {
       await fetch(`/api/habits/${habit.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -158,17 +158,31 @@ const renderWeekContainer = async (week) => {
 };
 
 const handleNoHabits = (habits, pet) => {
+  const weekContainer = document.querySelector('.weeks');
   if (habits.length  < 1) {
-    const weekContainer = document.querySelector('.weeks');
+    const noHabitsDiv = document.createElement('div');
+    const habitsLink = document.createElement('a');
+    habitsLink.setAttribute('href', '/dashboard');
+    habitsLink.setAttribute('id', 'homePageLink');
+    noHabitsDiv.classList.add('noHabits');
+    weekContainer.appendChild(noHabitsDiv);
     const noHabits = document.createElement('h2');
-    noHabits.textContent = 'No Habits Scheduled';
-    weekContainer.appendChild(noHabits);
+    noHabits.textContent = 'No habits scheduled, create a habit first!';
+    habitsLink.appendChild(noHabits);
+    noHabitsDiv.appendChild(habitsLink);
+
   }
   if (!pet[0]) {
-    const weekContainer = document.querySelector('.weeks');
+    const noPetDiv = document.createElement('div');
+    const petLink = document.createElement('a');
+    petLink.setAttribute('href', '/dashboard');
+    petLink.setAttribute('id', 'homePageLink');
+    noPetDiv.classList.add('noPet');
+    weekContainer.appendChild(noPetDiv);
     const noPet = document.createElement('h2');
     noPet.textContent = 'No Pet, create a pet first!';
-    weekContainer.appendChild(noPet);
+    petLink.appendChild(noPet);
+    noPetDiv.appendChild(petLink);
   }
 
 };

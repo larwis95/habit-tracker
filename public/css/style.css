@@ -166,7 +166,7 @@ ul {
   display: flex;
   justify-content: center;
   gap: 4vmin;
-  left: 50vh;
+  left: 100%;
   transform: translate(var(--right), 0);
   transition: transform 2s;
   overflow-x: hidden;
@@ -331,12 +331,40 @@ ul {
   height: 50px;
   border: 1px solid var(--khaki);
   transition: border 1000ms linear;
+  &:hover {
+    border: 2px solid red;
+    transition: all 1000ms linear;
+    background-image: url("../images/pixel-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
 }
 
 .selectedImg {
   border: 2px solid green;
   transition: border 1000ms linear;
 }
+
+.unselectedImg {
+  border: 1px solid var(--khaki);
+  transition: border 1000ms linear;
+}
+
+.noPet {
+  border: 3px solid var(--border);
+  background-color: var(--darkerBlue);
+  padding: 10px;
+  margin: 10px;
+}
+
+.noHabits {
+  border: 3px solid var(--border);
+  background-color: var(--darkerBlue);
+  padding: 10px;
+  margin: 10px;
+}
+
 /* ID selectors */
 #homePageLink,
 #homePageSignup {
