@@ -147,10 +147,7 @@ const renderWeekContainer = async (week) => {
     dayContainer.classList.add(`${date.name}`);
     dayContainer.classList.add('day');
     if (today === date.day) dayContainer.classList.add('today');
-    dayContainer.classList.add('col-lg-4');
-    dayContainer.classList.add('col-md-6');
-    dayContainer.classList.add('col-sm-12');
-    dayContainer.classList.add('col-xs-12');
+    dayContainer.classList.add('col');
     const dayHeader = document.createElement('h2');
     dayHeader.textContent = date.name;
     dayContainer.appendChild(dayHeader);
