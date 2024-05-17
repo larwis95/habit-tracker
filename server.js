@@ -19,7 +19,6 @@ const session = {
     maxAge: 1000 * 60 * 60,
     httpOnly: true,
     secure: false,
-    sameSite: 'none',
 
   },
   resave: false,
