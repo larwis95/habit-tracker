@@ -19,7 +19,7 @@ const session = {
     maxAge: 1000 * 60 * 60,
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: 'lax',
 
   },
   resave: false,
