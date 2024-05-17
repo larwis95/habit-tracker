@@ -16,7 +16,7 @@
   {
     "pet_name": "Pikachu",
     "pet_health": 14,
-    "pet_state": 1,
+    "pet_state": 3,
     "user_id": 3,
     "pet_type": "orange"
   },
