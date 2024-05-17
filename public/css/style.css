@@ -28,6 +28,10 @@ body .modal-open {
   position: absolute;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 header {
   text-align: center;
   background: var(--navbar);
@@ -62,7 +66,7 @@ select {
 
 option {
   background-color: var(--gray);
-  color: var(--khaki);
+  color: var(--border);
 }
 
 ul {
@@ -138,7 +142,7 @@ ul {
   background-color: var(--darkerBlue);
   background-image: url("../images/mountainbg.jpg");
   padding: 0;
-  min-height: 1500px;
+  min-height: 1200px;
   overflow-x: hidden;
   border: 3px solid var(--border);
   border-radius: .5rem;
@@ -154,6 +158,7 @@ ul {
 .homePage h1 {
   -webkit-text-stroke: 1px var(--gray);
   position: relative;
+  backdrop-filter: blur(5px);
 }
 
 .homePage p {
@@ -164,6 +169,7 @@ ul {
   position: relative;
   margin-bottom: 40px;
   font-weight: 100%;
+  backdrop-filter: blur(5px);
 }
 
 .homePagePets {
@@ -171,8 +177,10 @@ ul {
   justify-content: center;
   gap: 4vmin;
   left: 100%;
+  object-fit: cover;
+  object-position: var(--right) 50%;
   transform: translate(var(--right), 0);
-  transition: transform 2s;
+  transition: all 2s ease;
   overflow-x: hidden;
 }
 
@@ -192,6 +200,7 @@ ul {
 
 .homePageIntro {
   padding: 3%;
+  backdrop-filter: blur(5px);
 }
 
 .homePageAbout {
@@ -207,10 +216,12 @@ ul {
   padding-right: 5px;
   margin-right: 5px;
   font-size: 3rem;
+  backdrop-filter: blur(5px);
 }
 
 .homePageAbout p {
   margin-left: 15px;
+  backdrop-filter: blur(5px);
 }
 
 .signuploginRow {
@@ -224,6 +235,7 @@ ul {
   flex-direction: column;
   position: relative;
   margin-bottom: 50px;
+  backdrop-filter: blur(5px);
 };
 
 .weeks {
@@ -341,7 +353,7 @@ ul {
   margin: 10px;
   width: 50px;
   height: 50px;
-  border: 1px solid var(--khaki);
+  border: 1px solid var(--border);
   transition: border 1000ms linear;
   &:hover {
     border: 2px solid red;
@@ -359,7 +371,7 @@ ul {
 }
 
 .unselectedImg {
-  border: 1px solid var(--khaki);
+  border: 1px solid var(--border);
   transition: border 1000ms linear;
 }
 
@@ -391,7 +403,7 @@ ul {
 }
 
 #activePet {
-  border: 1px solid var(--khaki);
+  border: 1px solid var(--border);
   background-image: url("../images/pixel-bg.jpg");
   background-size: cover;
   background-position: center;
