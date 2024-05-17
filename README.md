@@ -7,7 +7,7 @@
  1. [Installation](#Installation)
  1. [Technologies](#Technologies)
  1. [Images](#Images)
- 1. [GitHub links](<#Contributor GitHub Links>)
+ 1. [Contributor GitHub links](<#Contributor GitHub Links>)
 
 
 
@@ -32,9 +32,9 @@ Clone the repository. Make sure you have node.js and MySQL installed. Run `npm i
 
 ## Images
 
-![landing page](image-2.png)
+![landing page](./images/image-2.png)
 
-![pet view](image-1.png)
+![pet view](./images/image-1.png)
 
 
 ## Contributor GitHub Links
